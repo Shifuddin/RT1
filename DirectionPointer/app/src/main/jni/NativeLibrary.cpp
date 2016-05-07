@@ -12,14 +12,16 @@ using namespace std;
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_fetch_1ident
-  (JNIEnv *, jobject){
+  (JNIEnv *env, jobject obj, jstring file_name){
 
+    const char *full_file_name = env->GetStringUTFChars(file_name, JNI_FALSE);
     vector <string> v;
 
     v = fetch_current_ident();
-    write_ident_file(v);
+    write_ident_file(v, full_file_name);
 
-    LOG_I("FETCH DONE");
+    //const char *nativeString = env->GetStringUTFChars(package_dir, JNI_FALSE);
+    LOG_I("dor %s", full_file_name);
   }
 
 /*
@@ -28,12 +30,13 @@ JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_fetch
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_match_1ident
-  (JNIEnv *, jobject){
+  (JNIEnv *env, jobject obj, jstring file_name){
 
+            const char *full_file_name = env->GetStringUTFChars(file_name, JNI_FALSE);
             vector<string> v1;
             vector <string> v2;
 
-            v1 = fetch_previous_ident();
+            v1 = fetch_previous_ident(full_file_name);
             v2 = fetch_current_ident();
 
             if(is_ident_match(v1, v2))
@@ -56,8 +59,9 @@ JNIEXPORT jint JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_match
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_false_1ident
-  (JNIEnv *, jobject){
+  (JNIEnv *env, jobject, jstring file_name){
             //LOG_I("CHECK FALSE");
-            write_false_ident();
+            const char *full_file_name = env->GetStringUTFChars(file_name, JNI_FALSE);
+            write_false_ident(full_file_name);
   }
 

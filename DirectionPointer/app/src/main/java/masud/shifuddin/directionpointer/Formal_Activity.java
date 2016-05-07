@@ -11,6 +11,8 @@ import android.widget.Toast;
 public class Formal_Activity extends AppCompatActivity {
 
     int isMatch;
+    String fileName = "/info.txt";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +28,10 @@ public class Formal_Activity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-                new Thread(new Runnable() {
+                Formal_Activity.this.runOnUiThread(new Runnable() {
                     public void run() {
                         NativeLibrary nativeLibrary = new NativeLibrary();
-                        isMatch = nativeLibrary.match_ident();
+                        isMatch = nativeLibrary.match_ident(getApplicationContext().getFilesDir().getAbsolutePath()+fileName);
                         if(isMatch == 0)
                         {
                             Intent intent = new Intent(Formal_Activity.this, MainActivity.class);
@@ -37,16 +39,12 @@ public class Formal_Activity extends AppCompatActivity {
                         }
                         else
                         {
-                           // showNotification("Unrecognized Device!");
+                            showNotification("Unrecognized Device !");
                         }
                     }
-                }).start();
-
-
-
+                });
 
             }
-
 
             });
 
@@ -59,7 +57,7 @@ public class Formal_Activity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     public void run() {
                         NativeLibrary nativeLibrary = new NativeLibrary();
-                        nativeLibrary.fetch_ident();
+                        nativeLibrary.fetch_ident( getApplicationContext().getFilesDir().getAbsolutePath()+fileName);
 
                     }
                 }).start();
@@ -78,7 +76,7 @@ public class Formal_Activity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     public void run() {
                         NativeLibrary nativeLibrary = new NativeLibrary();
-                        nativeLibrary.false_ident();
+                        nativeLibrary.false_ident(getApplicationContext().getFilesDir().getAbsolutePath()+fileName);
 
                     }
                 }).start();

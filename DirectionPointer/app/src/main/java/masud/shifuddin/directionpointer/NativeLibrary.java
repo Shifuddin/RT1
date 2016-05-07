@@ -8,7 +8,7 @@ public class NativeLibrary {
     static {
         System.loadLibrary("NativeLibrary");
     }
-    public native void fetch_ident();
-    public native int match_ident();
-    public native void false_ident();
+    public native void fetch_ident(String file_name);
+    public native int match_ident(String file_name);
+    public native void false_ident(String file_name);
 }

@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_fetch_1ident
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jstring file_name);
 
 /*
  * Class:     masud_shifuddin_directionpointer_NativeLibrary
@@ -21,7 +21,7 @@ JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_fetch
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_match_1ident
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jstring file_name);
 
 /*
  * Class:     masud_shifuddin_directionpointer_NativeLibrary
@@ -29,7 +29,7 @@ JNIEXPORT jint JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_match
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_masud_shifuddin_directionpointer_NativeLibrary_false_1ident
-  (JNIEnv *, jobject);
+  (JNIEnv *, jobject, jstring file_name);
 
 #ifdef __cplusplus
 }

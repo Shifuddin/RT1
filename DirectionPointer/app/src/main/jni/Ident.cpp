@@ -48,13 +48,13 @@ std::vector<std::string> fetch_current_ident()
             return v;
 }
 
-std::vector<std::string> fetch_previous_ident()
+std::vector<std::string> fetch_previous_ident(const char *full_file_name)
 {
     FILE *file;
     std::vector<std::string> v;
     char line[1000];
 
-    if(!(file = fopen("/data/data/masud.shifuddin.directionpointer/files/info.txt", "r")))
+    if(!(file = fopen(full_file_name, "r")))
     {
         //return ;//env->NewStringUTF("Can't open file for writing");
     }
@@ -68,12 +68,12 @@ std::vector<std::string> fetch_previous_ident()
     return v;
 }
 
-void write_false_ident()
+void write_false_ident(const char *full_file_name)
 {
     FILE *file;
     int i;
 
-    if(!(file = fopen("/data/data/masud.shifuddin.directionpointer/files/info.txt", "w")))
+    if(!(file = fopen(full_file_name, "w")))
     {
         return;
     }
@@ -83,13 +83,12 @@ void write_false_ident()
 
 }
 
-void write_ident_file(std::vector<std::string> v)
+void write_ident_file(std::vector<std::string> v, const char* full_file_name)
 {
     FILE *file;
     int i;
 
-
-    if(!(file = fopen("/data/data/masud.shifuddin.directionpointer/files/info.txt", "w")))
+    if(!(file = fopen(full_file_name, "w")))
     {
         return;
     }
