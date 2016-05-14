@@ -12,7 +12,7 @@
 #define COLON ':'
 
 //Method Declaration
-std::string str_append(std::string first_sequence, char* delimiter, char* last_sequence);
+std::string str_concat(std::string first_sequence, std::string delimiter, char* last_sequence);
 bool is_modification_date(std::string message);
 bool is_system_package(std::string package);
 const char* filter_package(std::string package);

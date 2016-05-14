@@ -1,4 +1,4 @@
-//
+//Includes all required header files
 // Created by shifuddin on 5/7/2016.
 //
 
@@ -10,4 +10,7 @@
 #include <android/log.h>
 #include <string>
 #include<unordered_map>
+#include <fstream>
+#include "log.h"
+#include "Ident.h"
 #endif //DIRECTIONPOINTER_HEADERS_H

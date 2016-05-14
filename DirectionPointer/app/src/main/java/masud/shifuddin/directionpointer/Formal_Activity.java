@@ -22,6 +22,13 @@ public class Formal_Activity extends AppCompatActivity {
         final Button fetch_ident = (Button)findViewById(R.id.button_fetch);
         final Button false_ident = (Button)findViewById(R.id.button_false);
 
+        /*
+         * Purpose: Match identification data
+         * Steps: 1. Create new thread
+         *        2. Call match_ident method from the native library
+         *        3. If match founds, runs our homework app
+         *        4. If not, notify user
+        */
         runApp.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -47,13 +54,18 @@ public class Formal_Activity extends AppCompatActivity {
             }
 
             });
-
+        /*
+         * Purpose: Fetch identification data
+         * Steps: 1. Create new thread
+         *        2. Call fetch_ident method from the native library
+        */
         fetch_ident.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view)
             {
 
+                
                 new Thread(new Runnable() {
                     public void run() {
                         NativeLibrary nativeLibrary = new NativeLibrary();
@@ -67,6 +79,11 @@ public class Formal_Activity extends AppCompatActivity {
 
         });
 
+        /*
+         * Purpose: Write false identification data
+         * Steps: 1. Create new thread
+         *        2. Call false_ident method from the native library
+        */
         false_ident.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -87,6 +104,9 @@ public class Formal_Activity extends AppCompatActivity {
         });
 
     }
+    /*
+     * Purpose: Show custom notification to user
+    */
     public void showNotification(String message)
     {
         Context context = getApplicationContext();

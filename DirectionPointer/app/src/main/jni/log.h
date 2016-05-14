@@ -1,4 +1,4 @@
-//
+//Customize __android_log_print
 // Created by shifuddin on 5/7/2016.
 //
 
